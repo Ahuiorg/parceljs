@@ -1,0 +1,18 @@
+@charset "UTF-8";
+@import url("cbc914f709a233ae11ab33ff48aacdc9.css");
+h2 {
+  font-size: 20px;
+  text-align: center;
+  font-family: '黑体'; }
+
+p {
+  font-size: 14px;
+  text-align: center;
+  font-family: 'Microsoft YaHei'; }
+
+section {
+  background: #f1f2f3;
+  padding: 20px; }
+  section h3 {
+    color: blue;
+    text-align: center; }

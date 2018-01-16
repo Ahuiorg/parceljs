@@ -1,0 +1,1 @@
+{"dependencies":[{"name":"_css_loader"}],"generated":{"css":".main {\n\topacity: .5;\n\twidth: 100px;\n\theight: 200px;\n\tmargin: 0 auto;\n\tbackground: linear-gradient(red , blue)\n}","js":"\n        var reloadCSS = require('_css_loader');\n        module.hot.dispose(reloadCSS);\n        module.hot.accept(reloadCSS);\n      "},"hash":"8b4580b142d5276d7b1259602c499e6e"}

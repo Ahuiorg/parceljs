@@ -132,13 +132,13 @@ function reloadCSS() {
 
 module.exports = reloadCSS;
 
-},{"./bundle-url":10}],3:[function(require,module,exports) {
+},{"./bundle-url":10}],4:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",9],"_css_loader":8}],4:[function(require,module,exports) {
+},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",9],"_css_loader":8}],5:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -148,7 +148,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = () => {
   console.log('in main.js');
 };
-},{}],5:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 console.log('in sort.js');
 
 function swap (i, j, array) {
@@ -211,11 +211,10 @@ function querySort(array) {
 }
 console.log(querySort(testArray), 'querySort');
 
-},{}],6:[function(require,module,exports) {
+},{}],3:[function(require,module,exports) {
 console.log('in clone.js');
 
 // 对象深度拷贝
-
 const testObj = {
 	name: 'Ange Lee',
 	sex: 'man',
@@ -255,6 +254,7 @@ function deepClone (obj) {
 }
 let angeli = deepClone(testObj);
 console.log('深度拷贝', angeli);
+
 angeli.like = 'baseketball';
 angeli.likely();
 
@@ -306,6 +306,38 @@ function countNum (array) {
 }
 
 console.log(countNum(Array.from(tags)));
+},{}],11:[function(require,module,exports) {
+function doSomething() {
+	console.log(this);
+}
+
+let element = document.getElementById('element');
+let clickBtn = document.getElementById('clickBtn');
+
+clickBtn.addEventListener('click', () => {
+	console.log('button');
+});
+
+element.addEventListener('click', () => {
+	console.log('element');
+});
+
+/*
+ http 头部信息
+ */
+
+let httpHeaderMsg = [
+	'accept',
+	'accept-charset',
+	'accept-encoding',
+	'accept-language',
+	'host',
+	'cookie',
+	'user-agent',
+	'referer',
+	'connection',
+]
+
 },{}],2:[function(require,module,exports) {
 "use strict";
 
@@ -321,6 +353,8 @@ require("./clone.js");
 
 require("./countTag.js");
 
+require("./base.js");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 console.log('来自于script的问候：新年快乐！！！');
@@ -330,7 +364,7 @@ console.log('来自于script的问候：新年快乐！！！');
 // console.log((!(~+[])+{})[--[~+""][+[]]*[~+[]] + ~~!+[]]+({}+[])[[~!+[]]*~+[]]);
 
 (0, _main2.default)();
-},{"./index.scss":3,"./main.js":4,"./sort.js":5,"./clone.js":6,"./countTag.js":7}],0:[function(require,module,exports) {
+},{"./index.scss":4,"./main.js":5,"./sort.js":6,"./clone.js":3,"./countTag.js":7,"./base.js":11}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -348,7 +382,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':58646/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':56468/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

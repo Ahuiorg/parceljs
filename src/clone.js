@@ -1,7 +1,6 @@
 console.log('in clone.js');
 
 // 对象深度拷贝
-
 const testObj = {
 	name: 'Ange Lee',
 	sex: 'man',
@@ -41,6 +40,7 @@ function deepClone (obj) {
 }
 let angeli = deepClone(testObj);
 console.log('深度拷贝', angeli);
+
 angeli.like = 'baseketball';
 angeli.likely();
 

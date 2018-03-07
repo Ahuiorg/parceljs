@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({10:[function(require,module,exports) {
+})({11:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -100,7 +100,7 @@ function getBaseURL(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 
-},{}],8:[function(require,module,exports) {
+},{}],9:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -132,13 +132,13 @@ function reloadCSS() {
 
 module.exports = reloadCSS;
 
-},{"./bundle-url":10}],4:[function(require,module,exports) {
+},{"./bundle-url":11}],3:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",9],"_css_loader":8}],5:[function(require,module,exports) {
+},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",10],"_css_loader":9}],6:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -148,7 +148,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = () => {
   console.log('in main.js');
 };
-},{}],6:[function(require,module,exports) {
+},{}],4:[function(require,module,exports) {
 console.log('in sort.js');
 
 function swap (i, j, array) {
@@ -211,7 +211,7 @@ function querySort(array) {
 }
 console.log(querySort(testArray), 'querySort');
 
-},{}],3:[function(require,module,exports) {
+},{}],5:[function(require,module,exports) {
 console.log('in clone.js');
 
 // 对象深度拷贝
@@ -268,7 +268,7 @@ console.log(angeli.company.time);
 
 
 
-},{}],7:[function(require,module,exports) {
+},{}],8:[function(require,module,exports) {
 console.log('in countTag');
 
 // 获取所有的tag
@@ -306,7 +306,7 @@ function countNum (array) {
 }
 
 console.log(countNum(Array.from(tags)));
-},{}],11:[function(require,module,exports) {
+},{}],7:[function(require,module,exports) {
 function doSomething() {
 	console.log(this);
 }
@@ -338,6 +338,28 @@ let httpHeaderMsg = [
 	'connection',
 ]
 
+
+// gaode 2018-01-30
+
+/**
+ * 给一个数字，返回国际格式 
+ * 1234567 => 1,234,567
+ */
+
+function turnContryNum (num) {
+	if (num < 1000) {
+		return num;
+	}
+	str = `,${num%1000}`;
+	return arguments.callee(num/1000);
+}
+
+
+console.log(turnContryNum(1234567));
+
+
+// 值引用
+
 },{}],2:[function(require,module,exports) {
 "use strict";
 
@@ -364,7 +386,7 @@ console.log('来自于script的问候：新年快乐！！！');
 // console.log((!(~+[])+{})[--[~+""][+[]]*[~+[]] + ~~!+[]]+({}+[])[[~!+[]]*~+[]]);
 
 (0, _main2.default)();
-},{"./index.scss":4,"./main.js":5,"./sort.js":6,"./clone.js":3,"./countTag.js":7,"./base.js":11}],0:[function(require,module,exports) {
+},{"./index.scss":3,"./main.js":6,"./sort.js":4,"./clone.js":5,"./countTag.js":8,"./base.js":7}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -382,7 +404,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':56468/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':59833/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

@@ -69,7 +69,7 @@ require = (function (modules, cache, entry) {
 
   // Override the current require with this new one
   return newRequire;
-})({11:[function(require,module,exports) {
+})({8:[function(require,module,exports) {
 var bundleURL = null;
 function getBundleURLCached() {
   if (!bundleURL) {
@@ -100,7 +100,7 @@ function getBaseURL(url) {
 exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 
-},{}],9:[function(require,module,exports) {
+},{}],6:[function(require,module,exports) {
 var bundle = require('./bundle-url');
 
 function updateLink(link) {
@@ -132,13 +132,13 @@ function reloadCSS() {
 
 module.exports = reloadCSS;
 
-},{"./bundle-url":11}],3:[function(require,module,exports) {
+},{"./bundle-url":8}],3:[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",10],"_css_loader":9}],6:[function(require,module,exports) {
+},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",7],"_css_loader":6}],4:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -148,217 +148,32 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = () => {
   console.log('in main.js');
 };
-},{}],4:[function(require,module,exports) {
-console.log('in sort.js');
-
-function swap (i, j, array) {
-	let temp = array[i];
-	array[i] = array[j];
-	array[j] = temp;
-}
-
-const testArray = [1, 2, 4, 3, 8, 5, 9, 7, 0, 6];
-
-// 冒泡排序
-function popSort(array) {
-	let len = array.length, isSwap;
-	for (let i = 0; i < len; i++) {
-		isSwap = false;
-		for (let j = 0; j < len - i -1; j++) {
-			(array[j] > array[j + 1]) && (isSwap = true) && (swap(j, j + 1, array))
-		}
-	}
-	return array;
-}
-console.log(popSort(testArray), 'popSort');
-
-// 选择排序
-function selectSort(array) {
-	let len = array.len, min=0;
-	for (let i = 0; i < len; i++) {
-		min = i;
-		for (let j = i + 1; j < len; j++) {
-			if (array[min] > array[j]) {
-				min = j;
-			}
-		}
-		if (min !== i) {
-			swap(i, min, array);
-		}
-	}
-	return array;
-}
-console.log(selectSort(testArray), 'selectSort');
-
-// 快速排序
-function querySort(array) {
-	if (array.length > 1) {
-		let len = array.length,
-			q = array[0],
-			leftArray = [],
-			rightArray = [];
-		for (let i = 1; i < len; i++) {
-			if (array[i] < q) {
-				leftArray.push(array[i]);
-			} else {
-				rightArray.push(array[i]);
-			}
-		}
-		return [].concat(arguments.callee(leftArray), [q], arguments.callee(rightArray));
-	} else {
-		return array;
-	}
-}
-console.log(querySort(testArray), 'querySort');
-
 },{}],5:[function(require,module,exports) {
-console.log('in clone.js');
-
-// 对象深度拷贝
-const testObj = {
-	name: 'Ange Lee',
-	sex: 'man',
-	age: '18',
-	friends: ['LePenghui', 'LeXingXing', 'LiWenhua'],
-	like: 'ski',
-	likely: function() {
-		console.log(`I like ${this.like}`);
-	},
-	company: {
-		name: 'MT',
-		miss: 'lipenghui02',
-		time: new Date()
-	}
-}
-
-// 当被拷贝的内容没有方法，也就没有函数的时候，可以用这个方法
-function cloneA(obj) {
-	return JSON.parse(JSON.stringify(obj));
-}
-let ahui = cloneA(testObj);
-console.log('json拷贝', ahui);
-
-
-// 深度拷贝
-function deepClone (obj) {
-	if (typeof obj !== 'object') {
-		return obj;
-	}
-
-	let result = obj instanceof Array ? [] : {};
-	for (let i in obj) {
-		result[i] = arguments.callee(obj[i]);
-	}
-
-	return result;
-}
-let angeli = deepClone(testObj);
-console.log('深度拷贝', angeli);
-
-angeli.like = 'baseketball';
-angeli.likely();
-
-console.log(testObj.company.time);
-console.log(angeli.company.time);
-
-
-
-
-
-
-
-
-},{}],8:[function(require,module,exports) {
-console.log('in countTag');
-
-// 获取所有的tag
-let tags = document.getElementsByTagName('*');
-
-// console.log(tags);
-console.log(Array.from(tags));
-// console.log([].slice.call(tags));
-
-
-// 统计数组中出现次数的多的项
-
-function countNum (array) {
-	let obj = {}, len = array.length;
-
-	for (let i = 0; i < len; i++) {
-		if (obj[array[i]]) {
-			obj[array[i]]++;
-		} else {
-			obj[array[i]] = 1;
-		}
-	}
-
-	console.log(obj);
-
-	let maxChart = '', maxValue = 0;
-	for (let k in obj) {
-		if (obj[k] > maxValue) {
-			maxValue = obj[k];
-			maxChart = k;
-		}
-	}
-
-	return maxChart;
-}
-
-console.log(countNum(Array.from(tags)));
-},{}],7:[function(require,module,exports) {
-function doSomething() {
-	console.log(this);
-}
-
-let element = document.getElementById('element');
-let clickBtn = document.getElementById('clickBtn');
-
-clickBtn.addEventListener('click', () => {
-	console.log('button');
-});
-
-element.addEventListener('click', () => {
-	console.log('element');
-});
-
 /*
- http 头部信息
+ 正则表达式的学习跟练习
+ 2018-3-7	
  */
 
-let httpHeaderMsg = [
-	'accept',
-	'accept-charset',
-	'accept-encoding',
-	'accept-language',
-	'host',
-	'cookie',
-	'user-agent',
-	'referer',
-	'connection',
-]
+// 给数字添加千分位
+const str = '123456789100';
 
+// 零宽断言
+const str1 = str.replace(/\d{1,3}(?=(\d{3})+$)/g, function(s) {
+	return s + ',';
+})
+console.log(str1);
 
-// gaode 2018-01-30
+// 子项
+const str2 = str.replace(/(\d{1,3})(?=(\d{3})+$)/g, function($1) {
+	return $1 = $1 + ',';
+});
+console.log(str2);
 
-/**
- * 给一个数字，返回国际格式 
- * 1234567 => 1,234,567
- */
-
-function turnContryNum (num) {
-	if (num < 1000) {
-		return num;
-	}
-	str = `,${num%1000}`;
-	return arguments.callee(num/1000);
-}
-
-
-console.log(turnContryNum(1234567));
-
-
-// 值引用
+// 先将字符串转化为数组，将数组反转，反转后的数组转化成字符串，把字符串从前面开始每三位加上,逗号，去掉最后的逗号，转化成数组，把数组反转，转换成字符串
+const str3 = str.split('').reverse().join('').replace(/(\d{3})/g, function ($1) {
+	return $1 = $1 + ',';
+}).replace(/,$/, '').split('').reverse().join('');
+console.log(str3);
 
 },{}],2:[function(require,module,exports) {
 "use strict";
@@ -369,13 +184,7 @@ var _main = require("./main.js");
 
 var _main2 = _interopRequireDefault(_main);
 
-require("./sort.js");
-
-require("./clone.js");
-
-require("./countTag.js");
-
-require("./base.js");
+require("./regexp.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -385,8 +194,12 @@ console.log('来自于script的问候：新年快乐！！！');
 
 // console.log((!(~+[])+{})[--[~+""][+[]]*[~+[]] + ~~!+[]]+({}+[])[[~!+[]]*~+[]]);
 
+// import "./sort.js";
+// import "./clone.js";
+// import "./countTag.js";
+// import "./base.js";
 (0, _main2.default)();
-},{"./index.scss":3,"./main.js":6,"./sort.js":4,"./clone.js":5,"./countTag.js":8,"./base.js":7}],0:[function(require,module,exports) {
+},{"./index.scss":3,"./main.js":4,"./regexp.js":5}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -404,7 +217,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':59833/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':59635/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 

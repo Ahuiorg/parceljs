@@ -138,7 +138,7 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
-},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",7],"_css_loader":6}],4:[function(require,module,exports) {
+},{"./main.css":["a85bfa5dca12f31c45e468d9dd693a9e.css","a85bfa5dca12f31c45e468d9dd693a9e.js",7],"_css_loader":6}],5:[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -148,7 +148,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = () => {
   console.log('in main.js');
 };
-},{}],5:[function(require,module,exports) {
+},{}],4:[function(require,module,exports) {
 /*
  正则表达式的学习跟练习
  2018-3-7	
@@ -162,6 +162,14 @@ const str1 = str.replace(/\d{1,3}(?=(\d{3})+$)/g, function(s) {
 	return s + ',';
 })
 console.log(str1);
+/**
+ * 正则内容
+ * \d{3}: 三个数字
+ * (\d{3})+: 重复一次或者多次的三个数字
+ * (\d{3})+$: 从尾部开始，重复一次或者多次的三个数字
+ * (?=(\d{3})+$): 这是一个零宽正预测先行断言，表示从尾部开始，(\d{3})匹配内容的位置，重复一次或者多次的匹配那个位置
+ * /\d{1,3}(?=(\d{3}))/: 因为千分位最前面的千分位数字长度是1到3，所以加一个\d{1,3};
+ */
 
 // 子项
 const str2 = str.replace(/(\d{1,3})(?=(\d{3})+$)/g, function($1) {
@@ -170,11 +178,14 @@ const str2 = str.replace(/(\d{1,3})(?=(\d{3})+$)/g, function($1) {
 console.log(str2);
 
 // 先将字符串转化为数组，将数组反转，反转后的数组转化成字符串，把字符串从前面开始每三位加上,逗号，去掉最后的逗号，转化成数组，把数组反转，转换成字符串
-const str3 = str.split('').reverse().join('').replace(/(\d{3})/g, function ($1) {
+const str3 = str.split('').reverse().join('').replace(/(\d{3})+?/g, function ($1) {
 	return $1 = $1 + ',';
 }).replace(/,$/, '').split('').reverse().join('');
 console.log(str3);
 
+console.log(str.split('').reverse().join('').replace(/(\d{3})+?/g, function ($1) {
+	return `${$1},`;
+}).replace(/,$/, '').split('').reverse().join(''));
 },{}],2:[function(require,module,exports) {
 "use strict";
 
@@ -199,7 +210,7 @@ console.log('来自于script的问候：新年快乐！！！');
 // import "./countTag.js";
 // import "./base.js";
 (0, _main2.default)();
-},{"./index.scss":3,"./main.js":4,"./regexp.js":5}],0:[function(require,module,exports) {
+},{"./index.scss":3,"./main.js":5,"./regexp.js":4}],0:[function(require,module,exports) {
 var global = (1, eval)('this');
 var OldModule = module.bundle.Module;
 function Module() {
@@ -217,7 +228,7 @@ function Module() {
 module.bundle.Module = Module;
 
 if (!module.bundle.parent && typeof WebSocket !== 'undefined') {
-  var ws = new WebSocket('ws://' + window.location.hostname + ':59635/');
+  var ws = new WebSocket('ws://' + window.location.hostname + ':53323/');
   ws.onmessage = function(event) {
     var data = JSON.parse(event.data);
 
